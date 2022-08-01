@@ -1,0 +1,45 @@
+import React, { Component } from 'react'
+
+export class Card extends Component {
+
+    constructor() {
+        super();
+        this.state = {
+            isClose: false,
+            text: false
+        }
+    }
+
+    ToggleHandler = (e) => {
+        this.setState({
+            text: !this.state.text,
+            isClose: !this.state.isClose
+
+        })
+    }
+  render() {
+    const {isClose,text} = this.state;
+    const {id,name,salary} = this.props;
+    return (
+        <div>
+        <div className="card col-lg-4 mt-4">
+            <div className="card-header text-end">
+                <span onClick={this.ToggleHandler}>{text ? 'Open' : 'Close'}</span>
+            </div>
+        {
+            isClose ? null : <div className="card-body">
+                <ul>
+                    <li>ID: {id}</li>
+                    <li>Name: {name}</li>
+                    <li>Salary: {salary} Dollar</li>
+                </ul>
+            </div>
+        }
+    </div>
+        </div>
+    )
+  }
+}
+
+export default Card 
+ 
